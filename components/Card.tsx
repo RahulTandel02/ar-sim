@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Card() {
   return (
@@ -25,7 +26,10 @@ export default function Card() {
           <span className="text-xs text-gray-600 font-semibold">
             VIEW DETAILS
           </span>
-          <button className="bg-primary-200/20 p-2 rounded-full">
+          <Link
+            href="/viewer?id=1"
+            className="bg-primary-200/20 p-2 rounded-full"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -40,7 +44,7 @@ export default function Card() {
                 d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
               />
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </div>

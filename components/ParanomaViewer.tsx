@@ -19,7 +19,6 @@ export default function ParanomaViewer() {
     if (!containerRef.current) return;
 
     const selectedData = data.find((item: any) => +item.id === +id!);
-    console.log(selectedData);
 
     const viewer = new Viewer({
       container: containerRef.current!,
