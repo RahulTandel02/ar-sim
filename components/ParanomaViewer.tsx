@@ -8,6 +8,7 @@ import "@photo-sphere-viewer/markers-plugin/index.css";
 import { useSearchParams } from "next/navigation";
 import { data } from "../app/data";
 import { useRouter } from "next/navigation";
+import { AutorotatePlugin } from "@photo-sphere-viewer/autorotate-plugin";
 
 export default function ParanomaViewer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,11 +25,16 @@ export default function ParanomaViewer() {
       container: containerRef.current!,
       panorama: selectedData?.image || "/project1/01.jpg",
       defaultZoomLvl: 50,
-      defaultYaw: "-90deg",
+      defaultYaw: "0deg",
+
       navbar: false,
       plugins: [
         MarkersPlugin.withConfig({
           markers: selectedData?.markers || [],
+        }),
+        AutorotatePlugin.withConfig({
+          autorotateSpeed: "2rpm",
+          autostartOnIdle: false,
         }),
       ],
     });
@@ -54,10 +60,7 @@ export default function ParanomaViewer() {
 
   return (
     <>
-      <div
-        ref={containerRef}
-        className="w-full h-screen rounded-lg overflow-hidden"
-      >
+      <div ref={containerRef} className="w-full h-screen overflow-hidden">
         <div className="absolute top-0 w-full h-screen z-10 pointer-events-none">
           <div className="p-4 top-0 left-0">
             <h2 className="mb-2 text-2xl font-bold text-white bg-opacity-50 px-6 py-3 rounded-lg">

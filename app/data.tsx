@@ -2,6 +2,7 @@ export const data = [
   {
     id: 1,
     image: "/project1/001.jpg",
+    defaultYaw: "0deg",
     markers: [
       {
         id: "image-2",
