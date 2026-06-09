@@ -25,6 +25,14 @@ export default function ParanomaViewer() {
       container: containerRef.current!,
       panorama: selectedData?.image || "/project1/01.jpg",
       defaultZoomLvl: 50,
+      panoData: {
+        fullWidth: 7680,
+        fullHeight: 4320,
+        croppedWidth: 7680,
+        croppedHeight: 4320,
+        croppedX: 0,
+        croppedY: 0,
+      },
       defaultYaw: "0deg",
 
       navbar: false,

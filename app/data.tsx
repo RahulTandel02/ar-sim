@@ -6,7 +6,7 @@ export const data = [
     markers: [
       {
         id: "image-2",
-        position: { yaw: "-1deg", pitch: "-6deg" },
+        position: { yaw: 6.24, pitch: -0.31 },
         size: { width: 100, height: 100 },
         html: `
                 <svg xmlns="http://www.w3.org/2000/svg" fill="white" class="bi bi-record-circle" viewBox="0 0 16 16">
