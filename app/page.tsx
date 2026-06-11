@@ -24,7 +24,7 @@ export default function Home() {
       </section>
       <section className="grid grid-cols-3 gap-10 px-15 py-10">
         <div className="col-span-3 text-xs text-primary-200 text-semibold tracking-wide">
-          SHOWING 6 PROPERTIES
+          SHOWING 1 PROPERTIES
         </div>
         <Card />
         <Card />

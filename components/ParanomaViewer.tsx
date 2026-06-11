@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import { data } from "../app/data";
 import { useRouter } from "next/navigation";
 import { AutorotatePlugin } from "@photo-sphere-viewer/autorotate-plugin";
+import Image from "next/image";
 
 export default function ParanomaViewer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -25,6 +26,14 @@ export default function ParanomaViewer() {
       container: containerRef.current!,
       panorama: selectedData?.image || "/project1/01.jpg",
       defaultZoomLvl: 50,
+      panoData: {
+        fullWidth: 7680,
+        fullHeight: 3840,
+        croppedWidth: 7680,
+        croppedHeight: 3840,
+        croppedX: 0,
+        croppedY: 0,
+      },
       defaultYaw: "0deg",
 
       navbar: false,
@@ -60,7 +69,22 @@ export default function ParanomaViewer() {
 
   return (
     <>
+    {id === "0" && (
+      <div>
+        <Image
+          src="/project1/main.jpg"
+          alt="Main Image"
+          width={3840}
+          height={1920}
+          // sizes="50vw"
+          className="w-full h-screen object-cover"
+        />
+      </div>
+    )}
+    { id !== "0" && ( 
       <div ref={containerRef} className="w-full h-screen overflow-hidden">
+      </div>
+      )}
         <div className="absolute top-0 w-full h-screen z-10 pointer-events-none">
           <div className="p-4 top-0 left-0">
             <h2 className="mb-2 text-2xl font-bold text-white bg-opacity-50 px-6 py-3 rounded-lg">
@@ -87,7 +111,6 @@ export default function ParanomaViewer() {
             </div>
           </div>
         </div>
-      </div>
     </>
   );
 }
