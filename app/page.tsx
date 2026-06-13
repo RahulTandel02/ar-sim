@@ -14,10 +14,10 @@ export default function Home() {
             <p className="max-w-md text-white/50 tracking-wide">
               Currated residential, commercial & industrial spaces
             </p>
-            <select className="w-full rounded-md border border-white/20 bg-white px-3 py-2 text-primary-600 outline-none sm:w-auto">
+            {/* <select className="w-full rounded-md border border-white/20 bg-white px-3 py-2 text-primary-600 outline-none sm:w-auto">
               <option>All Properties</option>
               <option>1 BHK</option>
-            </select>
+            </select> */}
           </div>
         </div>
       </section>
