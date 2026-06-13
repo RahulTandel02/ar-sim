@@ -4,7 +4,7 @@ import { Suspense } from "react";
 
 export default function ViewerPage() {
   return (
-    <main className="w-full h-screen relative">
+    <main className="relative h-[100dvh] w-full overflow-hidden">
       <Suspense fallback={<div>Loading...</div>}>
         {/* <PanoramaViewer /> */}
         <ParanomaViewer />
