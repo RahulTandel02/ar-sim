@@ -18,7 +18,7 @@ export default function Card() {
           COMMERCIAL
         </span>
         <h2 className="text-xl font-bold mt-2">Kuber Industrial Park</h2>
-        <p className="text-gray-500 text-sm">Office Spaces</p>
+        {/* <p className="text-gray-500 text-sm">Office Spaces</p> */}
         <div className="bg-primary-200/50 p-3 mt-2 border-l-4 border-primary-600 rounded-lg text-primary-600/80 text-sm font-medium">
           &quot;Refined Comfort&quot;
         </div>

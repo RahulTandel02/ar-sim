@@ -6,7 +6,7 @@ import { MarkersPlugin } from "@photo-sphere-viewer/markers-plugin";
 import "@photo-sphere-viewer/core/index.css";
 import "@photo-sphere-viewer/markers-plugin/index.css";
 import { useSearchParams } from "next/navigation";
-import { data } from "../app/data";
+import { data, plotings } from "../app/data";
 import { useRouter } from "next/navigation";
 import { AutorotatePlugin } from "@photo-sphere-viewer/autorotate-plugin";
 import Image from "next/image";
@@ -26,10 +26,15 @@ export default function ParanomaViewer() {
   const [modalContent, setModalContent] = useState<ReactNode>(null);
   const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
+  const [selectedPlot, setSelectedPlot] = useState<any>({});
   const autoRotatePluginRef = useRef<{
     start?: () => void;
     stop?: () => void;
   } | null>(null);
+  const plots = plotings.reduce((acc: any, plot: any) => {
+    return [...acc, ...plot.plots];
+  }, []);
 
   const copyToClipboard = async (text: string, label?: string) => {
     try {
@@ -84,13 +89,20 @@ export default function ParanomaViewer() {
       setCanShowViewer(!isMobileOrTablet || !isPortrait);
     };
 
+    const handleFullscreenChange = () => {
+      setIsFullscreen(Boolean(document.fullscreenElement));
+    };
+
     updateViewerAvailability();
+    handleFullscreenChange();
     window.addEventListener("resize", updateViewerAvailability);
     window.addEventListener("orientationchange", updateViewerAvailability);
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
 
     return () => {
       window.removeEventListener("resize", updateViewerAvailability);
       window.removeEventListener("orientationchange", updateViewerAvailability);
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
     };
   }, []);
 
@@ -275,6 +287,13 @@ export default function ParanomaViewer() {
     setIsModalOpen(true);
   }
 
+  function handlePlotSelection(plot: any) {
+    const selected = plotings.find((p) => p.plots.includes(plot));
+    if (selected) {
+      router.push(`viewer/?id=${selected.id}`);
+    }
+  }
+
   // function au
 
   if (!canShowViewer) {
@@ -297,6 +316,17 @@ export default function ParanomaViewer() {
   return (
     <>
       <div className="relative h-[100dvh] w-full overflow-hidden bg-black">
+        {isFullscreen && (
+          <button
+            type="button"
+            onClick={toggleFullScreen}
+            aria-label="Exit fullscreen"
+            className="pointer-events-auto absolute right-3 top-3 z-30 flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-slate-900/90 text-xl font-semibold text-white shadow-lg backdrop-blur-sm transition hover:bg-slate-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+          >
+            <span aria-hidden="true">×</span>
+          </button>
+        )}
+
         <div
           id="floor-plan-drawer"
           role="complementary"
@@ -325,7 +355,7 @@ export default function ParanomaViewer() {
             </div>
             <div className="flex-1 overflow-auto p-4">
               <div className="mx-auto w-full max-w-[1000px] rounded-3xl border border-white/10 bg-slate-900 p-2">
-                <Image
+                {/* <Image
                   src={floorPlanImage}
                   alt="Property floor plan"
                   width={1200}
@@ -333,7 +363,18 @@ export default function ParanomaViewer() {
                   className="mx-auto block max-w-full h-auto rounded-xl"
                   sizes="(max-width: 640px) 90vw, 380px"
                   priority={false}
-                />
+                /> */}
+                <div className="grid grid-cols-3 gap-4">
+                  {plots.map((plot: any) => (
+                    <span
+                      onClick={() => handlePlotSelection(plot)}
+                      className="bg-slate-800 text-white py-2 px-4 rounded-lg cursor-pointer hover:bg-sky-600 transition-colors text-center"
+                      key={plot}
+                    >
+                      {plot}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -385,14 +426,15 @@ export default function ParanomaViewer() {
                       className="relative h-[clamp(24px,3vw,40px)] w-[clamp(24px,3vw,40px)] text-white"
                       style={{ color: "white" }}
                     >
-                      <Image
-                        src="/record-circle.svg"
-                        alt={`Marker ${marker.id}`}
-                        fill
-                        sizes="30px"
-                        className="text-white"
-                        style={{ color: "white" }}
-                      />
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="white"
+                        className="bi bi-record-circle"
+                        viewBox="0 0 16 16"
+                      >
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                        <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                      </svg>
                     </div>
                   </div>
                 ))}
@@ -532,7 +574,7 @@ export default function ParanomaViewer() {
                       viewBox="0 0 16 16"
                     >
                       <path d="M6 13c0 1.105-1.12 2-2.5 2S1 14.105 1 13s1.12-2 2.5-2 2.5.896 2.5 2m9-2c0 1.105-1.12 2-2.5 2s-2.5-.895-2.5-2 1.12-2 2.5-2 2.5.895 2.5 2" />
-                      <path fill-rule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z" />
+                      <path fillRule="evenodd" d="M14 11V2h1v9zM6 3v10H5V3z" />
                       <path d="M5 2.905a1 1 0 0 1 .9-.995l8-.8a1 1 0 0 1 1.1.995V3L5 4z" />
                     </svg>
                   </button>

@@ -127,3 +127,31 @@ body {
     width: 1rem;
   }
 }
+
+.exit-fullscreen {
+  position: fixed;
+  top: env(safe-area-inset-top, 16px);
+  right: 16px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(0, 0, 0, 0.55);
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  z-index: 999999;
+
+  backdrop-filter: blur(8px);
+
+  transition: opacity 0.25s ease;
+}
