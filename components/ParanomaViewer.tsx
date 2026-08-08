@@ -13,6 +13,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Modal from "./Modal";
 import Grid from "./Grid";
+import Carousal from "./Carousal";
 
 export default function ParanomaViewer() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -24,6 +25,7 @@ export default function ParanomaViewer() {
   const id = searchParams.get("id");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState<ReactNode>(null);
+  const [modalTitle, setModalTitle] = useState<string>("");
   const [copiedMessage, setCopiedMessage] = useState<string | null>(null);
   const [autoRotate, setAutoRotate] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -276,13 +278,14 @@ export default function ParanomaViewer() {
         );
       }
       case "photos":
-        return <Grid data={imageData} />;
+        return <Carousal data={imageData} />;
       default:
         return null;
     }
   }
 
   function setModalData(source: string) {
+    setModalTitle(source === "contact" ? "Contact" : "Gallery");
     setModalContent(getModalData(source));
     setIsModalOpen(true);
   }
@@ -588,7 +591,7 @@ export default function ParanomaViewer() {
         <Modal
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
-          title="Contact"
+          title={modalTitle}
         >
           {modalContent}
         </Modal>

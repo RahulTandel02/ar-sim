@@ -26,7 +26,7 @@ export default function Modal({
       />
 
       {/* Modal Box */}
-      <div className="relative z-10 w-full max-w-md scale-100 rounded-lg bg-white p-6 shadow-xl transition-all dark:bg-gray-800">
+      <div className="relative z-10 w-full max-w-2xl scale-100 rounded-lg bg-white p-6 shadow-xl transition-all dark:bg-gray-800">
         <div className="flex items-center justify-between border-b pb-3 dark:border-gray-700">
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
             {title || "Notification"}

@@ -15,7 +15,7 @@ export default function Footer() {
         <div className="grid gap-3 sm:grid-cols-2 md:flex md:flex-wrap md:justify-end">
           <Link
             href="https://wa.link/i01zb7"
-            className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-primary-600 shadow-sm transition duration-150 hover:bg-white/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 py-2.5 text-sm font-bold text-primary-600 shadow-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-lg active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <span className="flex size-7 items-center justify-center rounded-full bg-primary-600/10 transition group-hover:bg-primary-600/15">
               <svg
@@ -32,7 +32,7 @@ export default function Footer() {
           </Link>
           <Link
             href="/viewer?id=0"
-            className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-bold text-white transition duration-150 hover:border-white/40 hover:bg-white/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-white/25 bg-white/10 px-5 py-2.5 text-sm font-bold text-white transition duration-200 hover:-translate-y-0.5 hover:border-white/40 hover:bg-white/15 hover:shadow-lg active:translate-y-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             <span className="flex size-7 items-center justify-center rounded-full bg-white/15 transition group-hover:bg-white/25">
               <svg
