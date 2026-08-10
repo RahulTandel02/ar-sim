@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Card() {
   return (
-    <div className="overflow-hidden rounded-xl bg-white shadow-md">
+    <div className="overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-700 ease-out hover:scale-105">
       <div className="relative h-56 w-full sm:h-64 lg:h-70">
         <Image
           unoptimized
@@ -44,7 +44,7 @@ export default function Card() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-              className="size-4 transition duration-200 group-hover:translate-x-1"
+                className="size-4 transition duration-200 group-hover:translate-x-1"
                 aria-hidden="true"
               >
                 <path

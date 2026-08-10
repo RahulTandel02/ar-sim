@@ -7,16 +7,15 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <section className="bg-primary-600 text-white">
-        <div className="relative h-56 w-full overflow-hidden sm:h-64 md:h-72 lg:h-80">
-          <Image
-            src="/cover.png"
-            alt="Cover Image"
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-center transition-transform duration-700 ease-out hover:scale-105"
-          />
+      <section className=" text-white">
+        <div className="relative h-140 w-full overflow-hidden sm:h-12 md:h-72 lg:h-80">
+          <picture>
+            <source media="(max-width: 768px)" srcSet="Phone.png" />
+
+            <source media="(max-width: 1200px)" srcSet="Tablet.png" />
+
+            <img src="Desktop.jpeg" alt="Kuber Industrial Park" />
+          </picture>
           {/* <h4 className="text-sm tracking-tighter mb-3">OUR PORTFOLIO</h4>
           <h1 className="my-2 text-3xl sm:text-4xl">Signature Properties</h1>
           <div className="flex flex-col gap-4 text-sm sm:flex-row sm:items-center sm:justify-between">
