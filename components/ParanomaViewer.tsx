@@ -61,13 +61,13 @@ export default function ParanomaViewer() {
   }
 
   const imageData = [
-    { id: 1, src: "/photos/image01.jpg" },
-    { id: 2, src: "/photos/image02.jpg" },
-    { id: 3, src: "/photos/image03.jpg" },
-    { id: 4, src: "/photos/image04.jpg" },
-    { id: 5, src: "/photos/image05.jpg" },
-    { id: 6, src: "/photos/image06.jpg" },
-    { id: 7, src: "/photos/image07.jpg" },
+    { id: 1, src: "/photosData/image01.jpg" },
+    { id: 2, src: "/photosData/image02.jpg" },
+    { id: 3, src: "/photosData/image03.jpg" },
+    { id: 4, src: "/photosData/image04.jpg" },
+    { id: 5, src: "/photosData/image05.jpg" },
+    { id: 6, src: "/photosData/image06.jpg" },
+    { id: 7, src: "/photosData/image07.jpg" },
   ];
 
   const numberMarkers = [
