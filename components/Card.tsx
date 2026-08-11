@@ -1,9 +1,20 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function Card() {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/viewer?id=0");
+  };
+
   return (
-    <div className="overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-700 ease-out hover:scale-105">
+    <div
+      onClick={handleClick}
+      className="cursor-pointer overflow-hidden rounded-xl bg-white shadow-md transition-transform duration-700 ease-out hover:scale-105"
+    >
       <div className="relative h-56 w-full sm:h-64 lg:h-70">
         <Image
           unoptimized
@@ -14,9 +25,9 @@ export default function Card() {
         />
       </div>
       <div className="p-5">
-        <span className="bg-primary-200/20 py-1 px-2 text-xs/6 text-primary-600 font-bold rounded-xl">
+        {/* <span className="bg-primary-200/20 py-1 px-2 text-xs/6 text-primary-600 font-bold rounded-xl">
           COMMERCIAL
-        </span>
+        </span> */}
         <h2 className="text-xl font-bold mt-2">Kuber Industrial Park</h2>
         {/* <p className="text-gray-500 text-sm">Office Spaces</p> */}
         <div className="bg-primary-200/50 p-3 mt-2 border-l-4 border-primary-600 rounded-lg text-primary-600/80 text-sm font-medium">
@@ -28,7 +39,7 @@ export default function Card() {
               VIEW DETAILS
             </span>
             <p className="mt-1 text-sm font-semibold text-gray-900">
-              Explore the interactive tour
+              Explore the virtual tour
             </p>
           </div>
           <Link
